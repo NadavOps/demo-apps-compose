@@ -1,0 +1,6 @@
+# Sleep simple
+
+## run
+```bash
+run.sh -i OAUTH_GOOGLE_CLIENT_ID -s OAUTH_GOOGLE_CLIENT_SECRET -e OAUTH2_PROXY_EMAIL_DOMAINS
+```
