@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  elasticsearch:
+    image: elasticsearch:${ELASTIC_VERSION}
+    container_name: elasticsearch-${COMPOSE_PROJECT_NAME}
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ports:
+      - ${ELASTICSEARCH_EXPOSED_PORT}:9200
+
+  kibana:
+    image: kibana:${ELASTIC_VERSION}
+    container_name: kibana-${COMPOSE_PROJECT_NAME}
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch-${COMPOSE_PROJECT_NAME}:9200
+    ports:
+      - ${KIBANA_EXPOSED_PORT}:5601
+    depends_on:
+      - elasticsearch
