@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  grafana:
+    image: grafana/grafana:8.5.27
+    container_name: grafana
+    hostname: grafana
+
+  haproxy:
+    image: haproxy:2.8.0-alpine3.18
+    container_name: haproxy
+    hostname: haproxy
+    user: root
+    ports:
+      - 80:80
+      - 443:443
+    # sysctls: # for bridge mode
+    #     - net.ipv4.ip_unprivileged_port_start=0
+    volumes:
+      - "./haproxy:/usr/local/etc/haproxy"
+
