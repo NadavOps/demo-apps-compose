@@ -1,0 +1,9 @@
+version: '2.3'
+
+services:
+  nginx:
+    image: nadavops/nginx:delme_tests
+    container_name: nginx
+    pull_policy: always
+    ports:
+      - 80:80
